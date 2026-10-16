@@ -19,7 +19,6 @@ export function TelaVideo({
     const rotulo = rotuloDaFonte(tela.fonte);
 
     return (
-        // `order` troca a posição só no CSS, então inverter telas não recarrega os iframes
         <div
             ref={caixa}
             style={{ order: ordem }}

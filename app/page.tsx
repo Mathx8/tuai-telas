@@ -1,14 +1,16 @@
+import { Suspense } from "react";
 import { Cabecalho } from "@/components/Cabecalho";
 import { Seletor } from "@/components/home/Seletor";
 import { lerTelas } from "@/lib/fontes";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ t?: string | string[] }>;
-}) {
-  const { t } = await searchParams;
+type SearchParams = Promise<{ t?: string | string[] }>;
 
+async function SeletorComUrl({ searchParams }: { searchParams: SearchParams }) {
+  const { t } = await searchParams;
+  return <Seletor inicial={lerTelas(t)} />;
+}
+
+export default function Home({ searchParams }: { searchParams: SearchParams }) {
   return (
     <>
       <Cabecalho />
@@ -24,7 +26,10 @@ export default async function Home({
             Escolha até 4 transmissões, entre canais ou links do YouTube, e assista tudo lado a lado.
           </p>
         </section>
-        <Seletor inicial={lerTelas(t)} />
+
+        <Suspense fallback={<div className="h-12 w-72 animate-pulse rounded-2xl bg-white/5" />}>
+          <SeletorComUrl searchParams={searchParams} />
+        </Suspense>
       </main>
     </>
   );

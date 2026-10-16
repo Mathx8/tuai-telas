@@ -8,9 +8,9 @@ const ID_CANAL = /^UC[\w-]{22}$/;
 
 /** De onde vem o vídeo de uma tela. */
 export type Fonte =
-    | { tipo: "canal"; canal: string } // link padrão (player)
-    | { tipo: "youtube"; id: string; aoVivo?: boolean } // id do vídeo, ou do canal quando aoVivo
-    | { tipo: "link"; url: string }; // qualquer outra página incorporável
+    | { tipo: "canal"; canal: string }
+    | { tipo: "youtube"; id: string; aoVivo?: boolean }
+    | { tipo: "link"; url: string };
 
 export interface Tela {
     id: string;

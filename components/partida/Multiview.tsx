@@ -75,7 +75,7 @@ export function Multiview({ telas }: { telas: Tela[] }) {
 
     const total = telas.length;
     const duas = total === 2;
-    const modoEfetivo: Modo = duas ? modo : "dividido"; // miniatura só faz sentido com 2 telas
+    const modoEfetivo: Modo = duas ? modo : "dividido";
 
     const params = new URLSearchParams();
     telas.forEach((t) => params.append("t", serializar(t)));
